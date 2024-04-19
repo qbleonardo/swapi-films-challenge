@@ -3,7 +3,7 @@ package com.swapi.challengefilmes.controller;
 import com.swapi.challengefilmes.domain.DescriptionRequest;
 import com.swapi.challengefilmes.domain.Filmes;
 import com.swapi.challengefilmes.usecase.DescriptionFilmsUseCase;
-import com.swapi.challengefilmes.usecase.ListsFilmsUseCase;
+import com.swapi.challengefilmes.usecase.RetrieveFilmsUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +18,11 @@ public class FilmesController {
     DescriptionFilmsUseCase descriptionFilmsUseCase;
 
     @Autowired
-    ListsFilmsUseCase listsFilmsUseCase;
+    RetrieveFilmsUseCase retrieveFilmsUseCase;
 
     @GetMapping(path = "/listar-filmes")
     public List<Filmes> getAllFilmes(){
-        return listsFilmsUseCase.executeGetAllFilms();
+        return retrieveFilmsUseCase.executeGetAllFilms();
     }
 
     @PutMapping(path = "/atualizar-descricao/{idLancamento}")
