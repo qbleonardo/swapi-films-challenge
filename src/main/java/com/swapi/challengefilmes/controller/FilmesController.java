@@ -20,8 +20,13 @@ public class FilmesController {
     @Autowired
     RetrieveFilmsUseCase retrieveFilmsUseCase;
 
+    @GetMapping(path = "/buscar-filme/{idLancamento}")
+    public Filmes getFilmByIdLancamento(@PathVariable(value = "idLancamento") Integer idLancamento){
+        return retrieveFilmsUseCase.executeGetFilmByIdLancamento(idLancamento);
+    }
+
     @GetMapping(path = "/listar-filmes")
-    public List<Filmes> getAllFilmes(){
+    public List<Filmes> getAllFilms(){
         return retrieveFilmsUseCase.executeGetAllFilms();
     }
 
