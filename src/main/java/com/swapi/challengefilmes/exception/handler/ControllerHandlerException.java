@@ -1,6 +1,7 @@
 package com.swapi.challengefilmes.exception.handler;
 
 import com.swapi.challengefilmes.exception.FilmeNotFoundException;
+import com.swapi.challengefilmes.exception.SwapiGenericException;
 import com.swapi.challengefilmes.exception.response.ErrorData;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -71,6 +72,18 @@ public class ControllerHandlerException {
                 .build();
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SwapiGenericException.class)
+    public ResponseEntity<ErrorData> handleSwapiGenericException(SwapiGenericException swapiGenericException){
+        ErrorData response = ErrorData.builder()
+                .code(HttpStatus.valueOf(swapiGenericException.getHttpStatusCode().value()).name()
+                        .concat(" - ").concat(String.valueOf(HttpStatus.valueOf(swapiGenericException.getHttpStatusCode().value()))))
+                .title("Erro à API Swapi")
+                .detail(swapiGenericException.getMessage())
+                .build();
+
+        return new ResponseEntity<>(response, swapiGenericException.getHttpStatusCode());
     }
 
 }
