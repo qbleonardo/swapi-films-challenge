@@ -26,8 +26,8 @@ public class FilmesController {
     }
 
     @GetMapping(path = "/listar-filmes")
-    public List<Filmes> getAllFilms(){
-        return retrieveFilmsUseCase.executeGetAllFilms();
+    public List<Filmes> getAllFilms(@RequestParam(value = "ordenacao", required = false) boolean ordenacao){
+        return retrieveFilmsUseCase.executeGetAllFilms(ordenacao);
     }
 
     @PutMapping(path = "/atualizar-descricao/{idLancamento}")

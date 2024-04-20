@@ -5,6 +5,7 @@ import com.swapi.challengefilmes.exception.FilmeNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -14,12 +15,12 @@ public class DescriptionFilmsUseCase {
     public Filmes executeUpdateDescription(Integer idLancamento, String descricao){
         Optional<Filmes> filmeToUpdate = Filmes.getFilmes().stream()
                 .filter(filme ->  filme.getIdLancamento().equals(idLancamento))
-                .findAny();
+                .findFirst();
 
         filmeToUpdate
                 .ifPresent(f -> { 
                     f.setDescricao(descricao);
-                    f.setVersao(f.getVersao() + 1);
+                    f.setVersao(f.getVersao() + BigDecimal.ONE.intValue());
                 });
 
         return filmeToUpdate

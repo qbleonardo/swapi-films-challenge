@@ -1,8 +1,12 @@
 package com.swapi.challengefilmes.domain;
 
 import com.swapi.challengefilmes.external.feign.response.Result;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +36,7 @@ public class Filmes {
     public static void appendFilmes(Result film) {
         getFilmes().add(Filmes.builder()
                 .idLancamento(film.getEpisodeId())
-                .versao(1)
+                .versao(BigDecimal.ONE.intValue())
                 .titulo(film.getTitle())
                 .dataLancamento(film.getReleaseDate())
                 .diretor(film.getDirector())
