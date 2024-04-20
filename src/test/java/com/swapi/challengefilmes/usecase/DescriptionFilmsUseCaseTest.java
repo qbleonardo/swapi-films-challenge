@@ -10,8 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-
 import static com.swapi.challengefilmes.fixture.FilmesFixture.getNewHopeFixture;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,14 +18,11 @@ class DescriptionFilmsUseCaseTest {
     @InjectMocks
     DescriptionFilmsUseCase descriptionFilmsUseCase;
 
-    List<Filmes> filmes;
-
     @BeforeEach
     void setUp() {
         Filmes.getFilmes().clear();
 
-        filmes = Filmes.getFilmes();
-        filmes.add(getNewHopeFixture());
+        Filmes.getFilmes().add(getNewHopeFixture());
     }
 
     @Test
@@ -39,7 +34,7 @@ class DescriptionFilmsUseCaseTest {
     }
 
     @Test
-    @DisplayName(value = "Teste para validar incrementação de versão ao alteração descrição")
+    @DisplayName(value = "Teste para validar incrementação de versão ao alterar descrição")
     public void shouldIncrementVersionAfterUpdate() {
         Filmes descricaoAlterada = descriptionFilmsUseCase.executeUpdateDescription(4, "alteracao de version/descricao");
 

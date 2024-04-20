@@ -25,7 +25,7 @@ class FilmLoaderUseCaseTest {
     FilmLoaderUseCase filmLoaderUseCase;
 
     @Test
-    @DisplayName("Teste para validar inicialização de método e retorno da API Swapi RC 200")
+    @DisplayName("Teste para validar inicialização de método e carregamento de lista caso retorno da API Swapi seja RC 200")
     public void shouldInitializeMethodWithoutException(){
         when(swapiClient.getAllFilms()).thenReturn(ResponseEntity.ok(getSwapiResponseFixture()));
 
