@@ -57,8 +57,8 @@ public class ControllerHandlerException {
     public ResponseEntity<ErrorData> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException mAt){
         ErrorData response = ErrorData.builder()
                 .code(HttpStatus.BAD_REQUEST.name().concat(" - ").concat(String.valueOf(HttpStatus.BAD_REQUEST.value())))
-                .title(String.format("%s não encontrado", mAt.getName()))
-                .detail(String.format("Valor: [%s] diverge dos valores númericos válidos para requisição", mAt.getValue().toString()))
+                .title(String.format("Parâmetro [%s] não consta-se correto", mAt.getName()))
+                .detail(String.format("Valor: [%s] diverge dos valores esperados para requisição. Validar em contrato!", mAt.getValue().toString()))
                 .build();
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

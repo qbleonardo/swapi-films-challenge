@@ -1,5 +1,6 @@
 package com.swapi.challengefilmes.controller;
 
+import com.swapi.challengefilmes.controller.swagger.FilmesControllerSwagger;
 import com.swapi.challengefilmes.domain.DescriptionRequest;
 import com.swapi.challengefilmes.domain.Filmes;
 import com.swapi.challengefilmes.usecase.DescriptionFilmsUseCase;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/filmes")
-public class FilmesController {
+public class FilmesController implements FilmesControllerSwagger {
 
     @Autowired
     DescriptionFilmsUseCase descriptionFilmsUseCase;
