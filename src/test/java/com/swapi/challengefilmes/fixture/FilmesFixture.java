@@ -15,4 +15,16 @@ public class FilmesFixture {
                     .versao(1)
                 .build();
     }
+
+    public static Filmes getRevengeSithFixture() {
+        return Filmes.builder()
+                .titulo("Revenge of the Sith")
+                .diretor("George Lucas")
+                .produtor("Rick McCallum")
+                .dataLancamento("2005-05-19")
+                .idLancamento(3)
+                .descricao("War! The Republic is crumbling\\r\\nunder attacks by the ruthless\\r\\nSith Lord, Count Dooku.\\r\\nThere are heroes on both sides.\\r\\nEvil is everywhere.\\r\\n\\r\\nIn a stunning move, the\\r\\nfiendish droid leader, General\\r\\nGrievous, has swept into the\\r\\nRepublic capital and kidnapped\\r\\nChancellor Palpatine, leader of\\r\\nthe Galactic Senate.\\r\\n\\r\\nAs the Separatist Droid Army\\r\\nattempts to flee the besieged\\r\\ncapital with their valuable\\r\\nhostage, two Jedi Knights lead a\\r\\ndesperate mission to rescue the\\r\\ncaptive Chancellor....")
+                .versao(1)
+                .build();
+    }
 }

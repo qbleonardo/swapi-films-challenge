@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.Objects;
@@ -47,6 +48,17 @@ public class ControllerHandlerException {
                 .code(HttpStatus.BAD_REQUEST.name().concat(" - ").concat(String.valueOf(HttpStatus.BAD_REQUEST.value())))
                 .title(String.format("Formato incorreto no campo: %s", methodArgumentNotValidException.getParameter().getParameterName()))
                 .detail(Objects.requireNonNull(methodArgumentNotValidException.getBindingResult().getFieldError()).getDefaultMessage())
+                .build();
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorData> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException mAt){
+        ErrorData response = ErrorData.builder()
+                .code(HttpStatus.BAD_REQUEST.name().concat(" - ").concat(String.valueOf(HttpStatus.BAD_REQUEST.value())))
+                .title(String.format("%s não encontrado", mAt.getName()))
+                .detail(String.format("Valor: [%s] diverge dos valores númericos válidos para requisição", mAt.getValue().toString()))
                 .build();
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
