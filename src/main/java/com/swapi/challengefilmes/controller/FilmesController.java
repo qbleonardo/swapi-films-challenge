@@ -6,6 +6,7 @@ import com.swapi.challengefilmes.usecase.DescriptionFilmsUseCase;
 import com.swapi.challengefilmes.usecase.RetrieveFilmsUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,19 +22,21 @@ public class FilmesController {
     RetrieveFilmsUseCase retrieveFilmsUseCase;
 
     @GetMapping(path = "/buscar-filme/{idLancamento}")
-    public Filmes getFilmByIdLancamento(@PathVariable(value = "idLancamento") Integer idLancamento){
-        return retrieveFilmsUseCase.executeGetFilmByIdLancamento(idLancamento);
+    public ResponseEntity<Filmes> getFilmByIdLancamento(@PathVariable(value = "idLancamento") Integer idLancamento) {
+        return ResponseEntity.ok()
+                .body(retrieveFilmsUseCase.executeGetFilmByIdLancamento(idLancamento));
     }
 
     @GetMapping(path = "/listar-filmes")
-    public List<Filmes> getAllFilms(@RequestParam(value = "ordenacao", required = false) boolean ordenacao){
-        return retrieveFilmsUseCase.executeGetAllFilms(ordenacao);
+    public ResponseEntity<List<Filmes>> getAllFilms(@RequestParam(value = "ordenacao", required = false) boolean ordenacao) {
+        return ResponseEntity.ok()
+                .body(retrieveFilmsUseCase.executeGetAllFilms(ordenacao));
     }
 
     @PutMapping(path = "/atualizar-descricao/{idLancamento}")
-    public Filmes updateDescription(@PathVariable(value = "idLancamento") Integer idLancamento,
-                                    @RequestBody @Valid DescriptionRequest descricao){
-
-        return descriptionFilmsUseCase.executeUpdateDescription(idLancamento, descricao.getDescricao());
+    public ResponseEntity<Filmes> updateDescription(@PathVariable(value = "idLancamento") Integer idLancamento,
+                                                    @RequestBody @Valid DescriptionRequest descricao) {
+        return ResponseEntity.ok()
+                .body(descriptionFilmsUseCase.executeUpdateDescription(idLancamento, descricao.getDescricao()));
     }
 }
