@@ -1,6 +1,6 @@
 # Challenge Filmes - SWAPI
 
-Desafio proposto para criação de uma API responsável por consumir a API do Stars Wars (<a href="https://swapi.dev/">SWAPI</a>) e disponibilizar endpoints de alteração e recuperação de dados obtidos. 
+Desafio proposto para criação de uma API responsável por consumir a API do Stars Wars (<a href="https://swapi.py4e.com/">SWAPI</a>) e disponibilizar endpoints de alteração e recuperação de dados obtidos. 
 
 ## Definições técnicas
 
@@ -31,7 +31,7 @@ Para mais informações sobre os endpoints disponíveis, a API está configurada
 
 <strong>Contrato/Swagger: </strong> [challenge-contrato.json](https://github.com/qbleonardo/swapi-films-challenge/files/15048969/challenge-contrato.json) 
 
-## CURL
+## cURL
 Caso deseje realizar as requisições testes aos endpoints da API localmente, disponibilizando abaixo uma collection gerada via POSTMAN com os cURLs para cada endpoint.
 
 [SWAPI.postman_collection.json](https://github.com/qbleonardo/swapi-films-challenge/files/15049014/SWAPI.postman_collection.json)
